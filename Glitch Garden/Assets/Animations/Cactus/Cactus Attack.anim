@@ -1142,35 +1142,35 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.375
-    functionName: 
+    functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.125
-    functionName: 
+    functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.875
-    functionName: 
+    functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 3
-    functionName: 
+    functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 4
-    functionName: 
+    functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
