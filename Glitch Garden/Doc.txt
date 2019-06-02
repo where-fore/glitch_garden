@@ -1,0 +1,2 @@
+For lizard box collider - have it connected to animations (maybe immune during jump etc.)
+fix lizard shape - the particle effect spawns in the middle of the box, not the collider
