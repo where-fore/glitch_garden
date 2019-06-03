@@ -20,9 +20,8 @@ public class DamageDealer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        DamageReceiver damageReceiver = other.gameObject.GetComponent<DamageReceiver>();
-        if (!damageReceiver) {return;}
+        DamageReceiver damageReceiver = other.gameObject.GetComponentInChildren<DamageReceiver>();
+        if (!damageReceiver) { return; }
 
 
         if (other.gameObject.tag == playerTag)

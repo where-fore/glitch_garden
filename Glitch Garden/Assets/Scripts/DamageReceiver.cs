@@ -15,6 +15,7 @@ public class DamageReceiver : MonoBehaviour
     private void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        if (!mySpriteRenderer) {mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();}
     }
 
 

@@ -7,11 +7,13 @@ public class Shooter : MonoBehaviour
     [SerializeField] GameObject projectile = null;
 
     private GameObject projectileSpawnPoint = null;
-    private string projectileSpawnPointStringReference = "Projectile Spawn Point";
+    private string bodyChildStringReference = "Body";
+    private string projectileSpawnPointChildStringReference = "Projectile Spawn Point";
 
     void Start()
     {
-        projectileSpawnPoint = transform.Find(projectileSpawnPointStringReference).gameObject;
+        GameObject body = transform.Find(bodyChildStringReference).gameObject;
+        projectileSpawnPoint = body.transform.Find(projectileSpawnPointChildStringReference).gameObject;
     }
 
     public void Fire()
