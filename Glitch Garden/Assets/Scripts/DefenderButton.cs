@@ -7,31 +7,19 @@ public class DefenderButton : MonoBehaviour
     private Color notSelectedColor = new Color32(65, 65, 65, 255);
     private Color selectedColor = new Color32(255, 255, 255, 255);
 
-    [SerializeField] GameObject defenderToSpawn = null;
-    public GameObject correspondingDefender() {return defenderToSpawn;}
-        
-    private bool selected = false;
+    [SerializeField] Defender defenderToSpawn = null;
+
     private List<DefenderButton> allButtons = new List<DefenderButton>();
     private SpriteRenderer mySpriteRenderer = null;
+
+    private DefenderSpawner defenderSpawner = null;
 
     private void Start()
     {
         allButtons.AddRange(FindObjectsOfType<DefenderButton>());
         mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        defenderSpawner = FindObjectOfType<DefenderSpawner>();
     }
-
-    private void Update()
-    {
-        if (selected)
-        {
-            mySpriteRenderer.color = selectedColor;
-        }
-        else
-        {
-            mySpriteRenderer.color = notSelectedColor;
-        }
-    }
-
     private void OnMouseDown()
     {
         SelectButton();
@@ -50,11 +38,12 @@ public class DefenderButton : MonoBehaviour
 
     public void Select()
     {
-        selected = true;
+        mySpriteRenderer.color = selectedColor;
+        defenderSpawner.SetDefenderToSpawn(defenderToSpawn);
     }
 
     public void Deselect()
     {
-        selected = false;
+        mySpriteRenderer.color = notSelectedColor;
     }
 }
