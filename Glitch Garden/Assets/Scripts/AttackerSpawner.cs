@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackerSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject lizardPrefab = null;
+    [SerializeField] private Attacker attackerPrefab = null;
 
     [SerializeField] private float minSpawnTime = 1f;
     [SerializeField] private float maxSpawnTime = 5f;
@@ -16,7 +16,7 @@ public class AttackerSpawner : MonoBehaviour
     {
         while (spawning)
         {
-            SpawnAttacker(lizardPrefab);
+            SpawnAttacker(attackerPrefab);
 
             float delay = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(delay);
@@ -24,14 +24,13 @@ public class AttackerSpawner : MonoBehaviour
 
     }
 
-    private void SpawnAttacker(GameObject attackerPrefab)
+    private void SpawnAttacker(Attacker attackerPrefab)
     {
-        Instantiate(attackerPrefab, transform.position, Quaternion.identity);
+        Attacker newAttacker = Instantiate
+            (attackerPrefab, transform.position, Quaternion.identity)
+            as Attacker;
+        
+        newAttacker.transform.parent = this.transform; 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

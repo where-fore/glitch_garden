@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackerBehaviour : MonoBehaviour
+public class Attacker : MonoBehaviour
 {
     private float currentSpeed = 0f;
     public void SetMovementSpeed(float newSpeed) {currentSpeed = newSpeed;}
