@@ -48,17 +48,6 @@ public class Shooter : MonoBehaviour
         return false;
     }
 
-    private void Update()
-    {
-        if (isThereAnAttackerInLane())
-        {
-            Debug.Log("HOSTILE DETECTED");
-        }
-        else{
-            Debug.Log("Standby...");
-        }
-    }
-
     public void Fire()
     {
         Instantiate(projectile, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
