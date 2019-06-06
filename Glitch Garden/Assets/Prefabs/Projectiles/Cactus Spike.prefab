@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 797755388706675921}
   - component: {fileID: 6253871823852365653}
+  - component: {fileID: 8413565872034803496}
+  - component: {fileID: 6060284163085811320}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -79,6 +81,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &8413565872034803496
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001808783262952254}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1827834, y: -0.0005556345}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0.5}
+    oldSize: {x: 0.29, y: 0.15}
+    newSize: {x: 0.29, y: 0.15}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2144332, y: 0.117773086}
+  m_EdgeRadius: 0
+--- !u!114 &6060284163085811320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001808783262952254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 132f3e04d205ca94ba160f7ec129fdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
+  shouldDestroyPlayers: 0
+  shouldDestroyEnemies: 1
 --- !u!1 &8386748747034511261
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,8 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1352007867570081978}
   - component: {fileID: 3669133436321042966}
-  - component: {fileID: -216406097405986809}
-  - component: {fileID: 1868573002220765145}
   m_Layer: 0
   m_Name: Cactus Spike
   m_TagString: Untagged
@@ -131,44 +172,3 @@ MonoBehaviour:
   rotateY: 0
   rotateZ: 0
   fireToTheRight: 1
---- !u!114 &-216406097405986809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8386748747034511261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 132f3e04d205ca94ba160f7ec129fdbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 100
-  shouldDestroyPlayers: 0
-  shouldDestroyEnemies: 1
---- !u!61 &1868573002220765145
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8386748747034511261}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.1827834, y: -0.0005556345}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0.5}
-    oldSize: {x: 0.29, y: 0.15}
-    newSize: {x: 0.29, y: 0.15}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2144332, y: 0.117773086}
-  m_EdgeRadius: 0

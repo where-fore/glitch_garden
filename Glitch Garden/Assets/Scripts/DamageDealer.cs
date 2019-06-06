@@ -44,13 +44,12 @@ public class DamageDealer : MonoBehaviour
     }
 
 
-    public void Impact()
+    private void Impact()
     {
         if (transform.parent.GetComponent<Projectile>() != null)
         {
             Destroy(transform.parent.gameObject);
         }
-
         Destroy(gameObject);
     }
     

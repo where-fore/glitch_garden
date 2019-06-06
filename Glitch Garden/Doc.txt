@@ -3,6 +3,3 @@ fix lizard shape - the particle effect spawns in the middle of the box, not the 
 
 sometimes when spawning a cactus/defender, they spawn in the middle of their animation
     > I spawned three cacti, the first spawned with the sprite ~Idle_0, the next at Idle_19, and the third at Idle_20 and was slightly pink
-
-the particle system doesnt work lol
-    > when the star particle system gets shot, the death vfx takes the same sprite for some reason

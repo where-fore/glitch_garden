@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] GameObject projectile = null;
+    [SerializeField] Projectile projectile = null;
 
     private GameObject projectileSpawnPoint = null;
     private string bodyChildStringReference = "Body";
