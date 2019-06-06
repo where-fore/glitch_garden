@@ -12,12 +12,29 @@ public class Shooter : MonoBehaviour
 
     private List<AttackerSpawner> mySpawners = new List<AttackerSpawner>();
 
+    private Animator myAnimatorComponent = null;
+    private string isAttackingAnimationParameterStringReference = "ShouldAttack";
+
     void Start()
     {
         GameObject body = transform.Find(bodyChildStringReference).gameObject;
         projectileSpawnPoint = body.transform.Find(projectileSpawnPointChildStringReference).gameObject;
 
+        myAnimatorComponent = GetComponent<Animator>();
+
         FindMySpawners();
+    }
+
+    private void Update()
+    {
+        if (IsThereAnAttackerInLane())
+        {
+            myAnimatorComponent.SetBool(isAttackingAnimationParameterStringReference, true);
+        }
+        else
+        {
+            myAnimatorComponent.SetBool(isAttackingAnimationParameterStringReference, false);
+        }
     }
 
     private void FindMySpawners()
@@ -35,7 +52,7 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    private bool isThereAnAttackerInLane()
+    private bool IsThereAnAttackerInLane()
     {
         foreach (AttackerSpawner spawner in mySpawners)
         {

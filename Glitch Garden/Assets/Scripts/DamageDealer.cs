@@ -17,6 +17,10 @@ public class DamageDealer : MonoBehaviour
     private string playerTag = "Player";
     private string enemyTag = "Enemy";
 
+    private void Start()
+    {
+        CheckBoxColliderProperties();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,30 +28,42 @@ public class DamageDealer : MonoBehaviour
         if (!damageReceiver) { return; }
 
 
-        if (other.gameObject.tag == playerTag)
+        if (shouldDestroyPlayers && other.gameObject.tag == playerTag)
         {
-            if (shouldDestroyPlayers)
-            {
-                damageReceiver.TakeDamage(damage);
-                
-                Impact();
-            }
+            damageReceiver.TakeDamage(damage);
+            
+            Impact();
         }
 
-        if (other.gameObject.tag == enemyTag)
+        if (shouldDestroyEnemies && other.gameObject.tag == enemyTag)
         {
-            if (shouldDestroyEnemies)
-            {
-                damageReceiver.TakeDamage(damage);
+            damageReceiver.TakeDamage(damage);
 
-                Impact();
-            }
+            Impact();
         }
     }
 
 
     public void Impact()
     {
+        if (transform.parent.GetComponent<Projectile>() != null)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+
         Destroy(gameObject);
     }
+    
+    private void CheckBoxColliderProperties()
+    {
+        BoxCollider2D myBoxCollider2D = GetComponent<BoxCollider2D>();
+        
+        if (!myBoxCollider2D) { Debug.Log("No BoxCollider2D found on me! Name: " + name); }
+
+        if (myBoxCollider2D)
+        {
+            if (!myBoxCollider2D.isTrigger) { Debug.Log("My BoxCollider2D isn't a trigger! Name: " + name); }
+        }
+    }
+
 }

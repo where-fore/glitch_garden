@@ -8,6 +8,8 @@ public class DefenderSpawner : MonoBehaviour
 
     private StarDisplay starDisplayObject = null;
 
+    private List<Defender> allDefenders = new List<Defender>();
+
     private void Start()
     {
         starDisplayObject = FindObjectOfType<StarDisplay>();
@@ -15,9 +17,14 @@ public class DefenderSpawner : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Vector2 mousePos = GetMousePosition();
         if (defenderToSpawnObject)
         {
-            AttemptToPlaceDefenderAt(GetMousePosition());
+            if (!OverlappingDefender(mousePos))
+            {
+                AttemptToPlaceDefenderAt(mousePos);
+            }
+
         }
     }
 
@@ -35,6 +42,22 @@ public class DefenderSpawner : MonoBehaviour
         {
             starDisplayObject.FlashRed();
         }
+
+    }
+
+    private bool OverlappingDefender(Vector2 positionToCheck)
+    {
+        foreach (Defender defender in allDefenders)
+        {
+            Vector2 defenderPosition = new Vector2(defender.transform.position.x, defender.transform.position.y);
+            if (positionToCheck == defenderPosition)
+            {
+                return true;
+            }
+        }
+
+        //if you made it this far...
+        return false;
 
     }
 
@@ -65,6 +88,7 @@ public class DefenderSpawner : MonoBehaviour
         if (defenderToSpawnObject)
         {
             Defender newDefender = Instantiate(defenderToSpawnObject, positionToSpawn, Quaternion.identity); //as Defender
+            allDefenders.Add(newDefender);
         }
     }
 }
