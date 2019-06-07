@@ -6,7 +6,7 @@ using TMPro;
 
 public class StarDisplay : MonoBehaviour
 {
-    private int stars = 1000;
+    private int stars = 5000;
     public int GetStarCount() {return stars;}
     public bool EnoughStarsFor(int cost) {return (stars >= cost);}
 

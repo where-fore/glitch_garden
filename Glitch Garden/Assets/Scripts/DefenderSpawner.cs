@@ -49,6 +49,8 @@ public class DefenderSpawner : MonoBehaviour
     {
         foreach (Defender defender in allDefenders)
         {
+            if (!defender) {continue;}
+            
             Vector2 defenderPosition = new Vector2(defender.transform.position.x, defender.transform.position.y);
             if (positionToCheck == defenderPosition)
             {
