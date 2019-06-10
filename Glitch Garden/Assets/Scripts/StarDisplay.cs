@@ -24,15 +24,7 @@ public class StarDisplay : MonoBehaviour
     void Update()
     {
         myTextComponent.text = stars.ToString();
-
-        FlashText();
     }
-
-    private void FlashText()
-    {
-
-    }
-
 
     public void SpendStars(int amount)
     {

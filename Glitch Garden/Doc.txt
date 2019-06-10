@@ -6,6 +6,7 @@ sometimes when spawning a cactus/defender, they spawn in the middle of their ani
 
 if you want to spawn a defender, and you click on an attacker, sometimes nothing happens -> due to z-depth-fighting
 
+clean up FlashRed() in health and star display - it doesn't look very good. maybe have a timer that starts when FlashRed is called, and if the timer reaches 0, then return to default colour.
 
 
 
