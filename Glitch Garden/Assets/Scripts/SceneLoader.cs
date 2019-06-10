@@ -16,19 +16,18 @@ public class SceneLoader : MonoBehaviour
         
         if (currentSceneIndex == 0)
         {
-            StartCoroutine(WaitThenLoadStartMenu());
+            StartCoroutine(DelayThenLoadScene(timeBeforeLoadingStartMenu, startMenuSceneString));
         }
     }
-
-    private IEnumerator WaitThenLoadStartMenu()
+    public void LoadGameOverScreen(float delay)
     {
-        yield return new WaitForSeconds(timeBeforeLoadingStartMenu);
-
-        LoadStartMenu();
+        StartCoroutine(DelayThenLoadScene(delay, startMenuSceneString));
     }
 
-    public void LoadStartMenu()
+    private IEnumerator DelayThenLoadScene(float delay, string sceneToLoadStringReference)
     {
-        SceneManager.LoadScene(startMenuSceneString);
+        yield return new WaitForSeconds(delay);
+
+        SceneManager.LoadScene(sceneToLoadStringReference);
     }
 }
