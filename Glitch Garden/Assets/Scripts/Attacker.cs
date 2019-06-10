@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
+    [SerializeField] int damage = 0;
     private float currentSpeed = 0f;
     public void SetMovementSpeed(float newSpeed) {currentSpeed = newSpeed;}
     private GameObject currentTarget = null;
@@ -33,7 +34,7 @@ public class Attacker : MonoBehaviour
         currentTarget = target;
     }
 
-    public void StrikeCurrentTarget(int damage)
+    public void StrikeCurrentTarget()
     {
         if (!currentTarget) { return; }
 
