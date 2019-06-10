@@ -11,10 +11,13 @@ public class Attacker : MonoBehaviour
 
     private Animator myAnimatorComponent = null;
     private string isAttackingAnimationParameterStringReference = "ShouldAttack";
+    private AttackerSpawner mySpawner = null;
 
     private void Start()
     {
         myAnimatorComponent = GetComponent<Animator>();
+        mySpawner = transform.parent.gameObject.GetComponent<AttackerSpawner>();
+        mySpawner.IncrementAttackers();
     }
 
 
@@ -26,6 +29,11 @@ public class Attacker : MonoBehaviour
         {
             myAnimatorComponent.SetBool(isAttackingAnimationParameterStringReference, false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        mySpawner.DecrementAttackers();
     }
 
     public void Attack(GameObject target)

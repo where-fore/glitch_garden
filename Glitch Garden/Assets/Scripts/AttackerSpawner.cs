@@ -10,8 +10,14 @@ public class AttackerSpawner : MonoBehaviour
     [SerializeField] private float maxSpawnTime = 5f;
 
     private bool spawning = true;
+    public bool IsSpawning() {return spawning;}
+    public void StopSpawning() {spawning = false;}
 
-    // Start is called before the first frame update
+    private int attackersAlive = 0;
+    public int GetAttackersCount() {return attackersAlive;}
+    public void DecrementAttackers() {attackersAlive--;}
+    public void IncrementAttackers() {attackersAlive++;}
+
     private IEnumerator Start()
     {
         while (spawning)
@@ -30,7 +36,7 @@ public class AttackerSpawner : MonoBehaviour
             (attackerPrefab, transform.position, Quaternion.identity)
             as Attacker;
         
-        newAttacker.transform.parent = this.transform; 
+        newAttacker.transform.parent = this.transform;
     }
 
 }

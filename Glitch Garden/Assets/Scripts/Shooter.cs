@@ -56,7 +56,8 @@ public class Shooter : MonoBehaviour
     {
         foreach (AttackerSpawner spawner in mySpawners)
         {
-            if (spawner.transform.childCount > 0)
+            //if (spawner.transform.childCount > 0) -> depreciated code
+            if (spawner.GetAttackersCount() > 0)
             {
                 return true;
             }
