@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] GameObject levelCompleteCanvas = null;
+    [SerializeField] GameObject levelLostCanvas = null;
+    private float delayBeforeLoseGameScreen = 2.5f;
     private bool timerFinished = false;
     private bool levelFinished = false;
     private float delayBeforeNextLevel = 5f;
@@ -30,6 +32,12 @@ public class LevelManager : MonoBehaviour
     {
         levelCompleteCanvas.SetActive(true);
         sceneLoaderObject.LoadNextLevel(delayBeforeNextLevel);
+    }
+
+    public void LoseLevel()
+    {
+        levelLostCanvas.SetActive(true);
+        sceneLoaderObject.LoadGameOverScreen(delayBeforeLoseGameScreen);
     }
 
     public void LevelTimerFinished()

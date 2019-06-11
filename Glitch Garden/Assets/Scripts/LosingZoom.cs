@@ -63,4 +63,5 @@ public class LosingZoom : MonoBehaviour
         transform.position = startingPos;
         Time.timeScale = 1f;
     }
+    
 }

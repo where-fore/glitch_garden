@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    private int health = 10;
+    [SerializeField] private int health = 10;
     public int GetHealth() { return health; }
 
     private int healthToLosePerAttacker = 1;
-
-    private float delayBeforeLoseGameScreen = 2.5f;
 
     private SceneLoader sceneLoaderObject = null;
     private HealthDisplay healthDisplayObject = null;
@@ -22,7 +20,7 @@ public class Base : MonoBehaviour
             
             if (health <= 0)
             {
-                LoseGame(otherCollider.transform.position);
+                KilledBy(otherCollider.transform.position);
             }
         }
     }
@@ -37,12 +35,12 @@ public class Base : MonoBehaviour
     {
         health -= amount;
         healthDisplayObject.UpdateText();
-
     }
 
-    private void LoseGame(Vector3 killerPos)
+    private void KilledBy(Vector3 killerPos)
     {
         FindObjectOfType<LosingZoom>().Zoom(killerPos);
-        sceneLoaderObject.LoadGameOverScreen(delayBeforeLoseGameScreen);
+
+        FindObjectOfType<LevelManager>().LoseLevel();
     }
 }
