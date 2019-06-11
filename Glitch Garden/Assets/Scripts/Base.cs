@@ -19,6 +19,11 @@ public class Base : MonoBehaviour
         if (otherCollider.GetComponent<Attacker>())
         {
             LoseHealth(healthToLosePerAttacker);
+            
+            if (health <= 0)
+            {
+                LoseGame(otherCollider.transform.position);
+            }
         }
     }
 
@@ -33,14 +38,11 @@ public class Base : MonoBehaviour
         health -= amount;
         healthDisplayObject.UpdateText();
 
-        if (health <= 0)
-        {
-            LoseGame();
-        }
     }
 
-    private void LoseGame()
+    private void LoseGame(Vector3 killerPos)
     {
+        FindObjectOfType<LosingZoom>().Zoom(killerPos);
         sceneLoaderObject.LoadGameOverScreen(delayBeforeLoseGameScreen);
     }
 }
