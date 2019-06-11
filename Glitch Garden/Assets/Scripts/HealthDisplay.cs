@@ -18,6 +18,8 @@ public class HealthDisplay : MonoBehaviour
         baseObject = FindObjectOfType<Base>();
         myTextComponent = GetComponent<TextMeshProUGUI>();
         defaultColor = myTextComponent.color;
+
+        myTextComponent.text = baseObject.GetHealth().ToString();
     }
 
     public void UpdateText()
