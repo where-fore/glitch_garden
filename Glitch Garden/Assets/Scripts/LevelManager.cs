@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] GameObject levelCompleteCanvas = null;
     private bool timerFinished = false;
     private bool levelFinished = false;
-
+    private float delayBeforeNextLevel = 5f;
     private AttackerSpawner[] mySpawners = null;
+    private SceneLoader sceneLoaderObject = null;
 
     private void Start()
     {
         mySpawners = FindObjectsOfType<AttackerSpawner>();
+        sceneLoaderObject = FindObjectOfType<SceneLoader>();
     }
 
     private void Update()
@@ -19,9 +22,16 @@ public class LevelManager : MonoBehaviour
         if (!levelFinished && timerFinished && NoAttackersLeft()) // this may cause performance issues
         {
             levelFinished = true;
-            Debug.Log("Next Level!!!!!");
+            FinishLevel();
         }
     }
+
+    private void FinishLevel()
+    {
+        levelCompleteCanvas.SetActive(true);
+        sceneLoaderObject.LoadNextLevel(delayBeforeNextLevel);
+    }
+
     public void LevelTimerFinished()
     {
         timerFinished = true;
