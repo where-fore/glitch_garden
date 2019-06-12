@@ -39,8 +39,6 @@ public class Base : MonoBehaviour
 
     private void KilledBy(Vector3 killerPos)
     {
-        FindObjectOfType<LosingZoom>().Zoom(killerPos);
-
-        FindObjectOfType<LevelManager>().LoseLevel();
+        FindObjectOfType<LevelManager>().LoseLevel(killerPos);
     }
 }

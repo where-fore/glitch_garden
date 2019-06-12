@@ -6,9 +6,10 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] GameObject levelCompleteCanvas = null;
     [SerializeField] GameObject levelLostCanvas = null;
-    private float delayBeforeLoseGameScreen = 2.5f;
+    private float delayBeforeLoseGameScreen = 3.5f;
     private bool timerFinished = false;
     private bool levelFinished = false;
+    private bool levelLost = false;
     private float delayBeforeNextLevel = 5f;
     private AttackerSpawner[] mySpawners = null;
     private SceneLoader sceneLoaderObject = null;
@@ -34,10 +35,23 @@ public class LevelManager : MonoBehaviour
         sceneLoaderObject.LoadNextLevel(delayBeforeNextLevel);
     }
 
-    public void LoseLevel()
+    public void LoseLevel(Vector3 killer)
     {
+        if (levelLost) {return;}
+        levelLost = true;
+
+        FindObjectOfType<LosingZoom>().Zoom(killer);
+
         levelLostCanvas.SetActive(true);
-        sceneLoaderObject.LoadGameOverScreen(delayBeforeLoseGameScreen);
+        StartCoroutine(SecondStageLosing(delayBeforeLoseGameScreen));
+    }
+
+    private IEnumerator SecondStageLosing(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+
+        Time.timeScale = 0;
+        FindObjectOfType<LevelLostCanvasBehaviour>().BringUpButtons();
     }
 
     public void LevelTimerFinished()

@@ -6,29 +6,37 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     private string startMenuSceneString = "Start Menu";
-    private string startAgainMenuSceneString = "Game Over Screen";
-    private float timeBeforeLoadingStartMenu = 3f;
+    private string firstLevelSceneString = "Level 1";
 
-    private int currentSceneIndex = 0;
-    
-    void Start()
+    private void Awake()
     {
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        
-        if (currentSceneIndex == 0)
-        {
-            StartCoroutine(DelayThenLoadSceneCoroutine(timeBeforeLoadingStartMenu, startMenuSceneString));
-        }
-    }
-    
-    public void LoadGameOverScreen(float delay)
-    {
-        StartCoroutine(DelayThenLoadSceneCoroutine(delay, startAgainMenuSceneString));
+        Time.timeScale = 1;
     }
 
     public void LoadNextLevel(float delay)
     {
         StartCoroutine(DelayThenLoadNextSceneCoroutine(delay));
+    }
+
+    public void LoadMainMenu(float delay)
+    {
+        StartCoroutine(DelayThenLoadSceneCoroutine(delay, startMenuSceneString));
+    }
+
+
+    public void LoadFirstLevel(float delay)
+    {
+        StartCoroutine(DelayThenLoadSceneCoroutine(delay, firstLevelSceneString));
+    }
+
+    public void QuitGame(float delay)
+    {
+        StartCoroutine(DelayThenQuitGame(delay));
+    }
+
+    public void RestartLevel(float delay)
+    {
+        StartCoroutine(DelayThenLoadSceneCoroutine(delay, SceneManager.GetActiveScene().name));
     }
 
 
@@ -45,4 +53,12 @@ public class SceneLoader : MonoBehaviour
 
         SceneManager.LoadScene(sceneToLoadStringReference);
     }
+
+    private IEnumerator DelayThenQuitGame(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        Application.Quit();
+    }
+
 }

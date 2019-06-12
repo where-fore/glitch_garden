@@ -15,9 +15,7 @@ public class LosingZoom : MonoBehaviour
     float zPosSmooth = 7f;
     float posSmooth = 15f;
 
-    float zoomTimeScaleInstant = 0.1f;
-    float zoomTimeScaleAfter = 0.5f;
-    float timeScaleSmooth = 2f;
+    float zoomTimeScale = 0.1f;
 
     private Camera myCamera = null;
 
@@ -41,8 +39,6 @@ public class LosingZoom : MonoBehaviour
             float currentY = Mathf.Lerp(transform.position.y, zoomTargetPos.y, Time.deltaTime * posSmooth);
             float currentZ = Mathf.Lerp(transform.position.z, zoomPosZCoordinate, Time.deltaTime * zPosSmooth);
             transform.position = new Vector3(currentX, currentY, currentZ);
-
-            Time.timeScale = Mathf.Lerp(Time.timeScale, zoomTimeScaleAfter, Time.deltaTime * timeScaleSmooth);
         }
         
     }
@@ -54,7 +50,7 @@ public class LosingZoom : MonoBehaviour
 
         shouldZoom = true;
 
-        Time.timeScale = zoomTimeScaleInstant;
+        Time.timeScale = zoomTimeScale;
     }
 
     private void Reset()
