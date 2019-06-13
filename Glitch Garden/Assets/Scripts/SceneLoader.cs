@@ -8,6 +8,8 @@ public class SceneLoader : MonoBehaviour
     private string startMenuSceneString = "Start Menu";
     private string firstLevelSceneString = "Level 1";
 
+    private string optionsMenuSceneString = "Options Menu";
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -22,7 +24,10 @@ public class SceneLoader : MonoBehaviour
     {
         StartCoroutine(DelayThenLoadSceneCoroutine(delay, startMenuSceneString));
     }
-
+    public void LoadOptionsMenu(float delay)
+    {
+        StartCoroutine(DelayThenLoadSceneCoroutine(delay, optionsMenuSceneString));
+    }
 
     public void LoadFirstLevel(float delay)
     {
