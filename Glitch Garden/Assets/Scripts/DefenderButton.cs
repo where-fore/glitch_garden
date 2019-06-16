@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DefenderButton : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class DefenderButton : MonoBehaviour
     private Color selectedColor = new Color32(255, 255, 255, 255);
 
     [SerializeField] Defender defenderToSpawn = null;
+    [SerializeField] TextMeshProUGUI costObject = null;
 
     private List<DefenderButton> allButtons = new List<DefenderButton>();
     private SpriteRenderer mySpriteRenderer = null;
@@ -19,12 +22,16 @@ public class DefenderButton : MonoBehaviour
         allButtons.AddRange(FindObjectsOfType<DefenderButton>());
         mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         defenderSpawner = FindObjectOfType<DefenderSpawner>();
+        labelButtonWithCost();
     }
     private void OnMouseDown()
     {
         SelectButton();
     }
-
+    private void labelButtonWithCost()
+    {
+        costObject.text = defenderToSpawn.GetStarCost().ToString();
+    }
 
     private void SelectButton()
     {
