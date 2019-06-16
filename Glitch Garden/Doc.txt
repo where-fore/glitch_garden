@@ -11,6 +11,9 @@ clean up FlashRed() in health and star display - it doesn't look very good. mayb
 jazz up the level complete with the particles etc.
 
 
+FIND SOME ASSETS PLEASE :D
+
+
 current damage values:
 
 Defenders:
@@ -32,3 +35,12 @@ difficulty / intensity options
 > less health(monsters reaching base)
 > longer recharge time for defenders
 > 
+
+
+example level progression:
+level 1: learn cactus, and lizard
+level 2: learn trophy, and resources
+level 3: challenge - put what you learned to use (open up lanes)
+level 4: learn gnome
+level 5: learn gravestone
+level 6: fox!!!
