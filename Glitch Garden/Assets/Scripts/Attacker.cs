@@ -23,7 +23,7 @@ public class Attacker : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.left * currentSpeed * Time.deltaTime);
+        Move();
 
         if (!currentTarget)
         {
@@ -34,6 +34,15 @@ public class Attacker : MonoBehaviour
     private void OnDestroy()
     {
         mySpawner.DecrementAttackers();
+    }
+
+    private void Move()
+    {
+        float intensityMulti = PlayerPrefsController.GetIntensity() * 2;
+        float baseTweak = 0.8f;
+
+        Vector2 moveDelta = Vector2.left * currentSpeed * intensityMulti * baseTweak * Time.deltaTime;
+        transform.Translate(moveDelta);
     }
 
     public void Attack(GameObject target)

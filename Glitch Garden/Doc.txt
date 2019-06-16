@@ -18,3 +18,17 @@ Defenders:
 
 Attacks:
     200 Damage
+
+
+difficulty / intensity options
+> monster move speed
+> attack spawns (less hp but more of them?)
+> defender costs (only certain)
+> level length
+> have certain restrictions on planting - maybe fewer tiles, no duplicates next to each other etc... [could be used as challenges]
+> attacker damage / defender health
+> defenders take longer to get ready (more advance planning)
+> fewer resources to start
+> less health(monsters reaching base)
+> longer recharge time for defenders
+> 

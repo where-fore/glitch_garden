@@ -10,6 +10,8 @@ public class MusicPlayer : MonoBehaviour
         myAudioSource = GetComponent<AudioSource>();
 
         DontDestroyOnLoad(this.gameObject);
+
+        myAudioSource.volume = PlayerPrefsController.GetMasterVolume();
     }
 
     public void SetVolume(float newVolume)

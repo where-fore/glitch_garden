@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class OptionsController : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider = null;
     [SerializeField] float defaultVolume = 0.75f;
+    [SerializeField] TextMeshProUGUI volumeNumeralDisplay = null;
 
     [SerializeField] Slider intensitySlider = null;
     [SerializeField] float defaultIntensity = 1f;
+    [SerializeField] TextMeshProUGUI intensityNumeralDisplay = null;
 
     private MusicPlayer musicPlayerObject = null;
 
@@ -24,19 +27,25 @@ public class OptionsController : MonoBehaviour
     void Update()
     {
         UpdateMusicVolume();
+        UpdateNumeralDisplay();
     }
 
     private void UpdateMusicVolume()
     {
-        Debug.Log(musicPlayerObject.name);
         if (musicPlayerObject)
         {
             musicPlayerObject.SetVolume(volumeSlider.value);
         }
         else
         {
-            Debug.LogError("No music player found.");
+            Debug.LogError("No music player found. Did you start from splash?");
         }
+    }
+
+    private void UpdateNumeralDisplay()
+    {
+        volumeNumeralDisplay.text = System.Math.Round(volumeSlider.value, 2).ToString();
+        intensityNumeralDisplay.text = System.Math.Round(intensitySlider.value, 2).ToString();
     }
 
     public void SaveAndExit()
