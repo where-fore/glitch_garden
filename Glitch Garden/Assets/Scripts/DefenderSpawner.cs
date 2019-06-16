@@ -91,6 +91,7 @@ public class DefenderSpawner : MonoBehaviour
         {
             Defender newDefender = Instantiate(defenderToSpawnObject, positionToSpawn, Quaternion.identity); //as Defender
             allDefenders.Add(newDefender);
+            newDefender.transform.parent = this.transform;
         }
     }
 }
