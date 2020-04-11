@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private string startMenuSceneString = "Start Menu";
-    private string firstLevelSceneString = "Level 1";
-
-    private string optionsMenuSceneString = "Options Menu";
+    [SerializeField] private string startMenuSceneString = "Start Menu";
+    [SerializeField] private string firstLevelSceneString = "Level 1";
+    [SerializeField] private string optionsMenuSceneString = "Options Menu";
 
     private void Awake()
     {
